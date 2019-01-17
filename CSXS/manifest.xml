@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="5.0" ExtensionBundleId="com.illustrator.gradients_trim" ExtensionBundleVersion="0.0.1"
+				   ExtensionBundleName="Gradients Trim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Author>
+		<![CDATA[Nikolay Budyuk]]>
+	</Author>	<Contact mailto="nichon@list.ru"/>
+	<ExtensionList>
+		<Extension Id="com.illustrator.gradients_trim" Version="0.0.1" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="ILST" Version="21.1" />
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="5.0" />
+
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="com.illustrator.gradients_trim">
+			<DispatchInfo >
+				<Resources>
+					<MainPath>./index.html</MainPath>
+					<ScriptPath>./jsx/hostscript.jsx</ScriptPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>GradientsTrim</Menu>
+					<Geometry>
+						<Size>
+							<Height>270</Height>
+							<Width>172</Width>
+						</Size>
+						<MinSize>
+							<Height>270</Height>
+							<Width>172</Width>
+						</MinSize>
+						<MaxSize>
+							<Height>270</Height>
+							<Width>172</Width>
+						</MaxSize>
+					</Geometry>
+					<Icons>
+					<Icon Type="Normal">./icons/iconNormal.png</Icon>
+					<Icon Type="RollOver">./icons/iconRollover.png</Icon>
+					<Icon Type="Disabled">./icons/iconDisabled.png</Icon>
+					<Icon Type="DarkNormal">./icons/iconDarkNormal.png</Icon>
+					<Icon Type="DarkRollOver">./icons/iconDarkRollover.png</Icon>
+				</Icons>
+
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

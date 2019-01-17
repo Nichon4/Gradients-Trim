@@ -1,0 +1,73 @@
+<!doctype html>
+<!--suppress CssNoGenericFontName -->
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!--<link rel="stylesheet" href="css/topcoat-desktop-dark.min.css"/>-->
+    <link  id="hostStyle" rel="stylesheet" href="css/styles.css"/>
+
+
+    <script src="js/libs/CSInterface.js"></script>
+    <script src="js/libs/jquery-3.3.1.js"></script>
+    <script src="js/themeManager.js"></script>
+    <script src="js/main.js"></script>
+
+    <title></title>
+</head>
+
+<body class="hostElt">
+
+<div id="content">
+    <div style="position: fixed; top: 0; right: 0; text-align: right; z-index: 1">
+        <input type="button" id="reloadbtn" onclick="location.reload(true)" value="R"/> <br/>
+        <input type="button" id="loadpathfinder" onclick='loadpathfinder()' value="pathF"/> <br/>
+        <input type="button" onclick='reloadjs("/jsx/hostscript.jsx")' value="hostscript"/> <br/>
+    </div>
+    <input class="cutline_input" type="text" id="cutLine_position" name="cutLine_position" placeholder="decimal with point" required />
+    <object class="direction_selector" id="direction_selector" title="Select side for trimming" type="image/svg+xml" data="icons/direction_selector.svg">
+        doesn't support
+    </object>
+    <input class="trim_button" type="submit" onclick="jsx_trimselection()" value="trim this shit!"/>
+
+    <textarea id="callback" class="callback" name="logarea" readonly="readonly" rows=1></textarea>
+
+    <script>
+      setCallback("test");
+    </script>
+
+</div>
+<!--<br />
+<div style="position: relative; top: 50px ">
+    <textarea id="toEval" name="toEval" cols="30" rows="3">alert("!!!");</textarea>
+    <input type="button" id="evalButton" onclick="evalareascript()" value="evalscript">
+</div>-->
+
+
+</body>
+<script>
+  var position = document.getElementById("cutLine_position");
+
+  position.oninput = position.onchange = function() {
+    const match = cutLine_position.value.match(/^[-\d(-\d)](\d+)?(\.\d*)?/);
+    var cleanValue = match ? match[0] : null;
+    document.getElementById("cutLine_position").value = cleanValue;
+  };
+
+  jQuery(document).ready( function($) {
+    script = "js/main.js";
+    scriptFolder = location.pathname.substr(1, location.pathname.lastIndexOf( '/' ));
+    script = scriptFolder + script;
+    console.log(script);
+    $.getScript(script)
+      .done(function( script, textStatus ) {
+        $('#logarea').val( textStatus );
+        reloadjs("/jsx/hostscript.jsx");
+      })
+      .fail(function( script, textStatus ) {
+        console.log( script + "; " + textStatus );
+      });
+  })(jQuery);
+
+</script>
+</html>
